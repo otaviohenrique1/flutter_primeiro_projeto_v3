@@ -1,16 +1,25 @@
-# flutter_primeiro_projeto_v2
+# flutter_primeiro_projeto_v3
 
-A new Flutter project.
+## Projeto feito no curso 'Flutter: aplicando persistência de dados' na Alura
 
-## Getting Started
+## Descrição
 
-This project is a starting point for a Flutter application.
+Versão com banco de dados do projeto 'flutter_primeiro_projeto_v2' do curso 'Flutter: Controller, navegação e estados' na Alura.
 
-A few resources to get you started if this is your first Flutter project:
+## Links
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Dart
+  1. Pagina oficial [link](https://dart.dev/)
+  2. Documentação [link](https://dart.dev/guides)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter
+  1. Pagina oficial [link](https://flutter.dev/)
+  2. Documentação [link](https://docs.flutter.dev/)
+
+- SQFlite
+  1. Pagina do pacote no pub.dev [link](https://pub.dev/packages/sqflite)
+  2. Pagina no github [link](https://github.com/tekartik/sqflite)
+  3. Documentação no github [link](https://github.com/tekartik/sqflite/tree/master/sqflite/doc)
+
+- Pub.dev
+  1. Pagina oficial [link](https://pub.dev/)

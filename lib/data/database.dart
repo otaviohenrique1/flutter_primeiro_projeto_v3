@@ -1,5 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:flutter_primeiro_projeto_v3/data/task_dao.dart';
 
 Future<Database> getDatabase() async {
   final String path = join(
@@ -9,19 +10,20 @@ Future<Database> getDatabase() async {
   return openDatabase(
     path,
     onCreate: (db, version) {
-      db.execute(tableSql);
+      /* Cria o banco de dados se ele nao existe */
+      db.execute(TaskDao.tableSql);
     },
     version: 1,
   );
 }
 
-const String tableSql = "CREATE TABLE $_tablename ("
-    "$_name TEXT, "
-    "$_difficulty INTEGER, "
-    "$_image TEXT"
-    ")";
+// const String tableSql = "CREATE TABLE $_tablename ("
+//     "$_name TEXT, "
+//     "$_difficulty INTEGER, "
+//     "$_image TEXT"
+//     ")";
 
-const String _tablename = "taskTable";
-const String _name = "name";
-const String _difficulty = "difficulty";
-const String _image = "image";
+// const String _tablename = "taskTable";
+// const String _name = "name";
+// const String _difficulty = "difficulty";
+// const String _image = "image";
