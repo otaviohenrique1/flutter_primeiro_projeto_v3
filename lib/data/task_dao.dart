@@ -22,17 +22,21 @@ class TaskDao {
     var itemExists =
         await find(tarefa.nome); // Busca se a tarefa existe no banco de dados
 
+    Map<String, dynamic> taskMap = toMap(tarefa);
+
     if (itemExists.isEmpty) {
       print("a tarefa nao Existia"); // Remover quando for para producao
+      /* Se a tarefa nao existe, ela vai ser criada */
       return await bancoDeDados.insert(
         _tablename,
-        values,
+        taskMap,
       );
     } else {
       print("a tarefa ja Existia"); // Remover quando for para producao
+      /* Se a tarefa existe, ela vai ser modificada */
       return await bancoDeDados.update(
         _tablename,
-        values,
+        taskMap,
         where: "$_name = ?",
         whereArgs: [tarefa.nome],
       );
@@ -97,5 +101,13 @@ class TaskDao {
     return toList(result);
   }
 
-  delete(String nomeDaTarefa) async {}
+  delete(String nomeDaTarefa) async {
+    print(
+        "Deletando tarefa: $nomeDaTarefa"); // Remover quando for para producao
+
+    final Database bancoDeDados = await getDatabase(); // Criar conexao
+
+    return bancoDeDados
+        .delete(_tablename, where: "$_name = ?", whereArgs: [nomeDaTarefa]);
+  }
 }

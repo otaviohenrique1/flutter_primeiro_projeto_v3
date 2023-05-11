@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_primeiro_projeto_v3/components/task.dart';
-import 'package:flutter_primeiro_projeto_v3/data/task_dao.dart';
+import 'package:flutter_primeiro_projeto_v3/data/task_inherited.dart';
 
-class FormScreen extends StatefulWidget {
-  const FormScreen({
+class FormScreen2 extends StatefulWidget {
+  const FormScreen2({
     super.key,
     required this.taskContext,
   });
@@ -11,10 +10,10 @@ class FormScreen extends StatefulWidget {
   final BuildContext taskContext;
 
   @override
-  State<FormScreen> createState() => _FormScreenState();
+  State<FormScreen2> createState() => _FormScreen2State();
 }
 
-class _FormScreenState extends State<FormScreen> {
+class _FormScreen2State extends State<FormScreen2> {
   TextEditingController nameController = TextEditingController();
   TextEditingController difficultyController = TextEditingController();
   TextEditingController imageController = TextEditingController();
@@ -151,11 +150,14 @@ class _FormScreenState extends State<FormScreen> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        TaskDao().save(Task(
+                        // print(nameController.text);
+                        // print(difficultyController.text);
+                        // print(imageController.text);
+                        TaskInherited.of(context).newTask(
                           nameController.text,
                           imageController.text,
                           int.parse(difficultyController.text),
-                        ));
+                        );
                         /* taskContext => contexto da outra tela */
                         ScaffoldMessenger.of(widget.taskContext).showSnackBar(
                           const SnackBar(
