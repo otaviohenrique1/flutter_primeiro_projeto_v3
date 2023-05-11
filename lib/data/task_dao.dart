@@ -23,11 +23,31 @@ class TaskDao {
         await find(tarefa.nome); // Busca se a tarefa existe no banco de dados
 
     if (itemExists.isEmpty) {
-      print("a tarefa nao Existia");
+      print("a tarefa nao Existia"); // Remover quando for para producao
       return await bancoDeDados.insert(
         _tablename,
+        values,
+      );
+    } else {
+      print("a tarefa ja Existia"); // Remover quando for para producao
+      return await bancoDeDados.update(
+        _tablename,
+        values,
+        where: "$_name = ?",
+        whereArgs: [tarefa.nome],
       );
     }
+  }
+
+  Map<String, dynamic> toMap(Task tarefa) {
+    print("Convertendo Tarefa em Map: "); // Remover quando for para producao
+    final Map<String, dynamic> mapaDeTarefas = Map();
+    // final Map<String, dynamic> mapaDeTarefas = {};
+    mapaDeTarefas[_name] = tarefa.nome;
+    mapaDeTarefas[_image] = tarefa.foto;
+    mapaDeTarefas[_difficulty] = tarefa.dificuldade;
+    print("Mapa de Tarefas: $mapaDeTarefas");
+    return mapaDeTarefas;
   }
 
   Future<List<Task>> findAll() async {
