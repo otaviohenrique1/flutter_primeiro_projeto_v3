@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_primeiro_projeto_v3/components/task.dart';
 import 'package:flutter_primeiro_projeto_v3/data/task_dao.dart';
-import 'package:flutter_primeiro_projeto_v3/data/task_inherited.dart';
 import 'package:flutter_primeiro_projeto_v3/screens/form_screen.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -17,6 +16,13 @@ class _InitialScreenState extends State<InitialScreen> {
     return Scaffold(
       appBar: AppBar(
         // leading: Container(),
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {});
+              },
+              icon: const Icon(Icons.refresh))
+        ],
         title: const Text("Tarefas"),
       ),
       body: Padding(
@@ -67,7 +73,7 @@ class _InitialScreenState extends State<InitialScreen> {
                       itemCount: items.length,
                       itemBuilder: (context, index) {
                         final Task tarefa = items[index];
-                        return;
+                        return tarefa;
                       },
                     );
                   }
@@ -88,19 +94,25 @@ class _InitialScreenState extends State<InitialScreen> {
                 }
                 return const Text("Erro ao carregar Tarefas");
               // break;
-              // default:
+              default:
+                return const Text("Erro desconhecido");
             }
-            return const Text("Erro desconhecido");
+            // return const Text("Erro desconhecido");
           },
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (contextNew) => FormScreen(taskContext: context),
-              ));
+            context,
+            MaterialPageRoute(
+              builder: (contextNew) => FormScreen(taskContext: context),
+            ),
+          ).then(
+            (value) => setState(() {
+              print("Recarregando a tela inicial");
+            }),
+          );
         },
         child: const Icon(Icons.add),
       ),

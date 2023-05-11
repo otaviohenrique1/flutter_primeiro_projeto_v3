@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_primeiro_projeto_v3/data/task_dao.dart';
 import 'difficulty.dart';
 
 class Task extends StatefulWidget {
@@ -90,25 +91,29 @@ class _TaskState extends State<Task> {
                       width: 52,
                       height: 52,
                       child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              widget.nivel++;
-                            });
-                            // print(widget.nivel);
-                          },
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Icon(Icons.arrow_drop_up),
-                              Text(
-                                "UP",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                ),
+                        onLongPress: () {
+                          TaskDao().delete(widget.nome);
+                        },
+                        onPressed: () {
+                          setState(() {
+                            widget.nivel++;
+                          });
+                          // print(widget.nivel);
+                        },
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Icon(Icons.arrow_drop_up),
+                            Text(
+                              "UP",
+                              style: TextStyle(
+                                fontSize: 12,
                               ),
-                            ],
-                          )),
-                    )
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
