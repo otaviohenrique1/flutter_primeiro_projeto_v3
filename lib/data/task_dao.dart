@@ -1,6 +1,6 @@
+import 'package:sqflite/sqflite.dart';
 import 'package:flutter_primeiro_projeto_v3/components/task.dart';
 import 'package:flutter_primeiro_projeto_v3/data/database.dart';
-import 'package:sqflite/sqflite.dart';
 
 class TaskDao {
   static const String tableSql = "CREATE TABLE $_tablename ("
